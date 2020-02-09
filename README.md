@@ -39,6 +39,8 @@ FlatMap(a1, a1 =>
 
 ## Scala Cats
 
+https://typelevel.org/cats/datatypes/freemonad.html
+
 ### 문법
 
 ``` scala
@@ -102,6 +104,8 @@ program.foldMap(compiler)
 
 
 ## Kotlin Arrow
+
+https://arrow-kt.io/docs/apidocs/arrow-free-data/arrow.free/-free/index.html
 
 ### 문법
 
@@ -186,6 +190,8 @@ program.foldMap(compiler, Id.monad()).value()
 
 
 ## Hasekll
+
+http://hackage.haskell.org/package/control-monad-free-0.6.2/docs/Control-Monad-Free.html
 
 ### 문법
 
