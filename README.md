@@ -9,9 +9,9 @@
 
 ``` scala
 sealed trait Free[F[_],A]
-case class Return[F[_],A](a: A) extends Free[F,A]
-case class Suspend[F[_],A](s: F[A]) extends Free[A,A]
-case class FlatMap[F[_],A,B](s: Free[F,A], f: A => Free[F,B]) extends Free[F,B]
+case class Return[F[_],A](a: A) extends Free[F,A] // Pure 라고도 함
+case class Suspend[F[_],A](s: F[A]) extends Free[A,A] // Lift 라고도 함
+case class FlatMap[F[_],A,B](s: Free[F,A], f: A => Free[F,B]) extends Free[F,B] // FlatMapped 라고도 함
 
 type IO[A] = Free[IO,A]
 
