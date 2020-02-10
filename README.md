@@ -9,9 +9,9 @@
 
 ``` scala
 sealed trait Free[F[_],A]
-case class Return[F[_],A](a: A) extends Free[F,A]
-case class Suspend[F[_],A](s: F[A]) extends Free[A,A]
-case class FlatMap[F[_],A,B](s: Free[F,A], f: A => Free[F,B]) extends Free[F,B]
+case class Return[F[_],A](a: A) extends Free[F,A] // Pure 라고도 함
+case class Suspend[F[_],A](s: F[A]) extends Free[A,A] // Lift 라고도 함
+case class FlatMap[F[_],A,B](s: Free[F,A], f: A => Free[F,B]) extends Free[F,B] // FlatMapped 라고도 함
 
 type IO[A] = Free[IO,A]
 
@@ -37,7 +37,25 @@ FlatMap(a1, a1 =>
 			FlatMap(aN, aN => Return(aN)))))
 ```
 
+## 예제
+
+- 어떤 key/value 컨텍스트(redis, inmemory ...)에서 값을 넣고 조회하고 삭제하는 비즈니스 로직
+- 실행 시점을 분리하려면? (나중에 실행)
+- 컨텍스트를 유연(redis, inmemory)하게 하려면?
+
+
+``` scala
+def run = {
+    context.put("wild-cats", 2)
+    context.put("tame-cats", 5)
+    val n = context.get("wild-cats")
+    context.delete("tame-cats")
+  }
+```
+
 ## Scala Cats
+
+https://typelevel.org/cats/datatypes/freemonad.html
 
 ### 문법
 
@@ -102,6 +120,8 @@ program.foldMap(compiler)
 
 
 ## Kotlin Arrow
+
+https://arrow-kt.io/docs/apidocs/arrow-free-data/arrow.free/-free/index.html
 
 ### 문법
 
@@ -186,6 +206,8 @@ program.foldMap(compiler, Id.monad()).value()
 
 
 ## Hasekll
+
+http://hackage.haskell.org/package/control-monad-free-0.6.2/docs/Control-Monad-Free.html
 
 ### 문법
 
