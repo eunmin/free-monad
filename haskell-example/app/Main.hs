@@ -24,7 +24,7 @@ program = do
   put' "wild-cats" 2
   put' "tame-cats" 5
   n <- get' "wild-cats"
-  delete' "tome-cats"
+  delete' "tame-cats"
   return n
 
 compiler :: MonadState (Map String Int) m => KVStoreM a -> m a
