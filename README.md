@@ -37,6 +37,22 @@ FlatMap(a1, a1 =>
 			FlatMap(aN, aN => Return(aN)))))
 ```
 
+## 예제
+
+- 어떤 key/value 컨텍스트(redis, inmemory ...)에서 값을 넣고 조회하고 삭제하는 비즈니스 로직
+- 실행 시점을 분리하려면? (나중에 실행)
+- 컨텍스트를 유연(redis, inmemory)하게 하려면?
+
+
+``` scala
+def run = {
+    context.put("wild-cats", 2)
+    context.put("tame-cats", 5)
+    val n = context.get("wild-cats")
+    context.delete("tame-cats")
+  }
+```
+
 ## Scala Cats
 
 https://typelevel.org/cats/datatypes/freemonad.html
